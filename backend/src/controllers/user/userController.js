@@ -23,7 +23,7 @@ exports.registration = async (req, res) => {
 exports.login = async (req, res) => {
     let result = await userLoginService(req, dataModel);
     if (result.status == 200) {
-        res.status(result.status).json({ message: result.message, data: result.data });
+        res.status(result.status).json({ message: result.message, token: result.token, data: result.data  });
     } else {
         res.status(result.status).json({ message: result.message, error: result.error });
     }

@@ -2,7 +2,7 @@
 
 const userCreateService = async (request, dataModel) => {
     try{
-        let postBody = Request.body;
+        let postBody = request.body;
         let data = await dataModel.create(postBody);
         return {status: 200, message: "User Registration Successfull", data: data};
     }catch(err){
