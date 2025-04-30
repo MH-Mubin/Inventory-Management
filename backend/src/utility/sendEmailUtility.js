@@ -9,7 +9,7 @@ const sendEmailUtility = async (emailTo, emailText, emailSubject) => {
             secure: false, // true for port 465, false for other ports
             auth: {
                 user: "mubin.creativecornersbd@gmail.com",     // 👉 Your Gmail address
-                pass: "creative1234"          // 👉 Your Gmail App Password
+                pass: "tucgebdmdnaejnkw"          // 👉 Your Gmail App Password
             }
         });
 

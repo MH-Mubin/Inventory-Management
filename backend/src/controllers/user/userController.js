@@ -1,7 +1,7 @@
 
 
-const dataModel = require("../../models/userModel"); // Import the user model
-const otpModel = require("../../models/otpModel"); // Import the OTP model
+const dataModel = require("../../models/users/userModel"); // Import the user model
+const otpModel = require("../../models/users/otpModel"); // Import the OTP model
 const userCreateService = require("../../services/user/userCreateService");
 const userLoginService = require("../../services/user/userLoginService");
 const userVerifyOTPService = require("../../services/user/userVerifyOTPService");
@@ -57,7 +57,7 @@ exports.recoverVerifyEmail = async (req, res) => {
 }
 
 exports.recoverVerifyOTP = async (req, res) => {
-    let result = await userVerifyOTPService(req, dataModel);
+    let result = await userVerifyOTPService(req, otpModel);
     if (result.status == 200) {
         res.status(result.status).json({ message: result.message, data: result.data });
     } else {

@@ -22,10 +22,10 @@ const dbSchema = new mongoose.Schema({
         default: Date.now,
         // expires: '5m', // OTP will expire after 5 minutes
     },
-    expiresAt: {
-        type: Date,
-        required: true,
-    }
+    // expiresAt: {
+    //     type: Date,
+    //     required: true,
+    // }
 },{timestamps: true}, { versionKey: false });
 
 const otpModel = mongoose.model('otps', dbSchema);

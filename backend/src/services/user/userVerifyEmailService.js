@@ -1,6 +1,6 @@
 
 
-const otpModel = require("../../models/otpModel");
+const otpModel = require("../../models/users/otpModel");
 const sendEmailUtility = require("../../utility/sendEmailUtility");
 
 

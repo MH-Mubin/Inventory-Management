@@ -28,7 +28,7 @@
 
 
 
-const otpModel = require("../../models/otpModel");
+const otpModel = require("../../models/users/otpModel");
 const bcrypt = require("bcrypt");
 
 const userResetPassService = async (request, dataModel) => {

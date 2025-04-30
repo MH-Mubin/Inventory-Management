@@ -3,7 +3,7 @@
 
 const userDetailsService = async (request, dataModel) => {
     try{
-        let data = await dataModel.agregate([{$match: {email: request.headers.email}}]);
+        let data = await dataModel.aggregate([{$match: {email: request.body.email}}]);
         return {status: 200, message: "User Details:", data: data};
     }catch(err){
         console.log(err);

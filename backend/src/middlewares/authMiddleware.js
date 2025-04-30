@@ -11,7 +11,7 @@ module.exports = (req, res, next) => {
             return res.status(401).json({ message: "Unauthorized" });
         } else {
             //console.log(decoded['data']); //getting the decoded token
-            req.headers.email = decoded['data']; //getting the email from the token
+            req.headers.email = decoded['data'].email; //getting the email from the token
             next();
         }
     })
