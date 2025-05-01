@@ -1,14 +1,14 @@
 
 
 
-const dataModel = require('../../models/brands/brandsModel');
+const dataModel = require('../../models/suppliers/supplierModel');
 const createService = require('../../services/common/createService');
 const updateService = require('../../services/common/updateService');
 const listService = require('../../services/common/listService');
 const dropdownService = require('../../services/common/dropdownService');
 
 
-exports.createBrand = async (req, res) => {
+exports.createSupplier = async (req, res) => {
     let result = await createService(req, dataModel);
     res.status(200).json({
         message: result.message,
@@ -17,7 +17,7 @@ exports.createBrand = async (req, res) => {
     });
 }
 
-exports.updateBrand = async (req, res) => {
+exports.updateSupplier = async (req, res) => {
     let result = await updateService(req, dataModel);
     res.status(200).json({
         message: result.message,
@@ -27,9 +27,9 @@ exports.updateBrand = async (req, res) => {
 }
 
 
-exports.brandList = async (req, res) => {
+exports.supplierList = async (req, res) => {
     let searchRgx = {"$regex": req.params.searchKeyword, "$options": "i"};
-    let searchArray = [{brandName: searchRgx}];
+    let searchArray = [{supplierName: searchRgx},{phone: searchRgx},{email: searchRgx},{address: searchRgx}]; // Adding search criteria for name, phone, email, and address
     let result = await listService(req, dataModel, searchArray);
     res.status(200).json({
         message: result.message,
@@ -38,8 +38,8 @@ exports.brandList = async (req, res) => {
     });
 }
 
-exports.brandDropdown = async (req, res) => {
-    let result = await dropdownService(req, dataModel, {_id:1, brandName:1});
+exports.supplierDropdown = async (req, res) => {
+    let result = await dropdownService(req, dataModel, {_id:1, supplierName:1});
     res.status(200).json({
         message: result.message,
         data: result.data,

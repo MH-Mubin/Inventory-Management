@@ -4,9 +4,9 @@
 const createService = async (request, dataModel) => {
     try{
         let postBody = request.body;
-        postBody.userEmail = request.headers.email; // Adding user email to the request body
+        postBody.userEmail = request.headers['email']; // Adding user email to the request body
 
-        let data = await dataModel.create(postBody); // Creating new service in the database
+        let data = await dataModel.insertMany(postBody); // Creating new service in the database
         return {status: 200, message: "Service Created Successfully", data: data};
     }catch(err){
         console.log(err);

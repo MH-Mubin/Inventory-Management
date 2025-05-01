@@ -3,10 +3,10 @@
 
 const dropDownService = async (request, dataModel, Projection) => {
     try{ 
-        let userEmail = request.headers.email; // Getting the user email from the header
+        let userEmail = request.headers['email']; // Getting the user email from the header
         let data = await dataModel.aggregate([
             {$match: {userEmail: userEmail}}, // Finding the document to update
-            {$project : Projection}
+            {$project : Projection} // Projecting the required fields
         ]);
         return {status: 200, message: "Dropdown data fetched successfully", data: data}; // Sending success response
     }

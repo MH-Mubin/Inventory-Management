@@ -1,14 +1,14 @@
 
 
 
-const dataModel = require('../../models/brands/brandsModel');
+const dataModel = require('../../models/categories/categoryModel');
 const createService = require('../../services/common/createService');
 const updateService = require('../../services/common/updateService');
 const listService = require('../../services/common/listService');
 const dropdownService = require('../../services/common/dropdownService');
 
 
-exports.createBrand = async (req, res) => {
+exports.createCategory = async (req, res) => {
     let result = await createService(req, dataModel);
     res.status(200).json({
         message: result.message,
@@ -17,7 +17,7 @@ exports.createBrand = async (req, res) => {
     });
 }
 
-exports.updateBrand = async (req, res) => {
+exports.updateCategory = async (req, res) => {
     let result = await updateService(req, dataModel);
     res.status(200).json({
         message: result.message,
@@ -27,9 +27,9 @@ exports.updateBrand = async (req, res) => {
 }
 
 
-exports.brandList = async (req, res) => {
+exports.categoryList = async (req, res) => {
     let searchRgx = {"$regex": req.params.searchKeyword, "$options": "i"};
-    let searchArray = [{brandName: searchRgx}];
+    let searchArray = [{categoryName: searchRgx}];
     let result = await listService(req, dataModel, searchArray);
     res.status(200).json({
         message: result.message,
@@ -38,8 +38,8 @@ exports.brandList = async (req, res) => {
     });
 }
 
-exports.brandDropdown = async (req, res) => {
-    let result = await dropdownService(req, dataModel, {_id:1, brandName:1});
+exports.categoryDropdown = async (req, res) => {
+    let result = await dropdownService(req, dataModel, {_id:1, categoryName:1});
     res.status(200).json({
         message: result.message,
         data: result.data,

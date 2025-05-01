@@ -1,14 +1,14 @@
 
 
 
-const dataModel = require('../../models/brands/brandsModel');
+const dataModel = require('../../models/customers/customerModel');
 const createService = require('../../services/common/createService');
 const updateService = require('../../services/common/updateService');
 const listService = require('../../services/common/listService');
 const dropdownService = require('../../services/common/dropdownService');
 
 
-exports.createBrand = async (req, res) => {
+exports.createCustomer = async (req, res) => {
     let result = await createService(req, dataModel);
     res.status(200).json({
         message: result.message,
@@ -17,7 +17,7 @@ exports.createBrand = async (req, res) => {
     });
 }
 
-exports.updateBrand = async (req, res) => {
+exports.updateCustomer = async (req, res) => {
     let result = await updateService(req, dataModel);
     res.status(200).json({
         message: result.message,
@@ -27,9 +27,9 @@ exports.updateBrand = async (req, res) => {
 }
 
 
-exports.brandList = async (req, res) => {
-    let searchRgx = {"$regex": req.params.searchKeyword, "$options": "i"};
-    let searchArray = [{brandName: searchRgx}];
+exports.customerList = async (req, res) => {
+    let searchRgx = {"$regex": req.params.searchKeyword, "$options": "i"}; // Creating a regex for case-insensitive search
+    let searchArray = [{customerName: searchRgx},{phone: searchRgx},{email: searchRgx},{address: searchRgx}]; // Adding search criteria for name, phone, email, and address
     let result = await listService(req, dataModel, searchArray);
     res.status(200).json({
         message: result.message,
@@ -38,8 +38,8 @@ exports.brandList = async (req, res) => {
     });
 }
 
-exports.brandDropdown = async (req, res) => {
-    let result = await dropdownService(req, dataModel, {_id:1, brandName:1});
+exports.customerDropdown = async (req, res) => {
+    let result = await dropdownService(req, dataModel, {_id:1, customerName:1});
     res.status(200).json({
         message: result.message,
         data: result.data,

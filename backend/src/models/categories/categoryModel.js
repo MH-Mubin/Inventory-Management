@@ -1,3 +1,4 @@
+
 // database model for brands
 
 const mongoose = require('mongoose');
@@ -6,7 +7,7 @@ const dbSchema = new mongoose.Schema({
     userEmail:{
         type: String,
     },
-    brandName: {
+    categoryName: {
         type: String,
         required: true,
         unique: true,
@@ -18,5 +19,5 @@ const dbSchema = new mongoose.Schema({
 }, { timestamps: true, versionKey: false });
 
 
-const brandsModel = mongoose.model("brands", dbSchema);
+const brandsModel = mongoose.model("categories", dbSchema);
 module.exports = brandsModel;
