@@ -1,5 +1,7 @@
 
-// database model for categories
+
+
+// database model for expenseTypes
 
 const mongoose = require('mongoose');
 const dbSchema = new mongoose.Schema({
@@ -7,10 +9,9 @@ const dbSchema = new mongoose.Schema({
     userEmail:{
         type: String,
     },
-    categoryName: {
+    expenseTypeName: {
         type: String,
         required: true,
-        unique: true,
     },
     createdAt: {
         type: Date,
@@ -19,5 +20,5 @@ const dbSchema = new mongoose.Schema({
 }, { timestamps: true, versionKey: false });
 
 
-const categoryModel = mongoose.model("categories", dbSchema);
-module.exports = categoryModel;
+const expenseTypeModel = mongoose.model("expenseTypes", dbSchema,);
+module.exports = expenseTypeModel;

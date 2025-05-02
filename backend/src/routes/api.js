@@ -7,6 +7,9 @@ const brandsController = require('../controllers/brands/brandsController');
 const categoriesController = require('../controllers/categories/categoryController');
 const customersController = require('../controllers/customers/customerController');
 const suppliersController = require('../controllers/suppliers/supplierController');
+const expenseTypeController = require('../controllers/expenses/expenseTypeController');
+const expenseController = require('../controllers/expenses/expenseController');
+const productsController = require('../controllers/products/productController');
 
 const router = express.Router();
 
@@ -53,6 +56,24 @@ router.post('/updateSupplier/:id', authMiddleware, suppliersController.updateSup
 router.get('/supplierList/:pageNo/:perPage/:searchKeyword', authMiddleware, suppliersController.supplierList); // List Supplier
 router.get('/supplierDropdown', authMiddleware, suppliersController.supplierDropdown); // Supplier Dropdown
 
+
+// Routes for expense Types
+router.post('/createExpenseType', authMiddleware, expenseTypeController.createExpenseType); // Create Expense
+router.post('/updateExpenseType/:id', authMiddleware, expenseTypeController.updateExpenseType); // Update Expense
+router.get('/expenseTypeList/:pageNo/:perPage/:searchKeyword', authMiddleware, expenseTypeController.expenseTypeList); // List Expense
+router.get('/expenseTypeDropdown', authMiddleware, expenseTypeController.expenseTypeDropdown); // Expense Dropdown
+
+
+// Routes for expense
+router.post('/createExpense', authMiddleware, expenseController.createExpense); // Create Expense
+router.post('/updateExpense/:id', authMiddleware, expenseController.updateExpense); // Update Expense
+router.get('/expenseList/:pageNo/:perPage/:searchKeyword', authMiddleware, expenseController.expenseList); // List Expense
+
+
+// Routes for Products
+router.post('/createProduct', authMiddleware, productsController.createProduct); // Create Product
+router.post('/updateProduct/:id', authMiddleware, productsController.updateProduct); // Update Product
+router.get('/productList/:pageNo/:perPage/:searchKeyword', authMiddleware, productsController.productList); // List Product
 
 
 module.exports = router;

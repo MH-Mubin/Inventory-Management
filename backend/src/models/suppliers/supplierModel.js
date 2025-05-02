@@ -34,5 +34,5 @@ const dbSchema = new mongoose.Schema({
 }, { timestamps: true, versionKey: false });
 
 
-const brandsModel = mongoose.model("suppliers", dbSchema);
-module.exports = brandsModel;
+const supplierModel = mongoose.model("suppliers", dbSchema);
+module.exports = supplierModel;

@@ -1,6 +1,6 @@
 
 
-// database model for brands
+// database model for customers
 
 const mongoose = require('mongoose');
 const dbSchema = new mongoose.Schema({
@@ -31,5 +31,5 @@ const dbSchema = new mongoose.Schema({
 }, { timestamps: true, versionKey: false });
 
 
-const brandsModel = mongoose.model("customers", dbSchema);
-module.exports = brandsModel;
+const customerModel = mongoose.model("customers", dbSchema);
+module.exports = customerModel;
