@@ -15,7 +15,10 @@ const listTwoJoinService = async (request, dataModel, searchArray, joinStage1, j
 
             data = await dataModel.aggregate([
                 { $match: { userEmail: userEmail}}, // Matching documents based on user email
-                joinStage1,joinStage2,
+                joinStage1,
+                { $unwind: "$categories" },
+                joinStage2,
+                { $unwind: "$brands" },
                 {$match: searchQuery }, // Matching documents based on user email and search criteria
                 {$facet: {
                     Total : [{$count: "count"}], // Counting the total number of documents
@@ -30,7 +33,11 @@ const listTwoJoinService = async (request, dataModel, searchArray, joinStage1, j
             // If search value is "0", return all documents for the user
             data = await dataModel.aggregate([
                 { $match: { userEmail: userEmail}}, // Matching documents based on user email
-                joinStage1,joinStage2,
+                joinStage1,
+                //{ $unwind: "$categories" },
+                joinStage2,
+                //{ $unwind: "$brands" },
+                {$match: { userEmail: userEmail}}, // Matching documents based on user email
                 {$facet: {
                     Total : [{$count: "count"}], // Counting the total number of documents
                     Rows : [
