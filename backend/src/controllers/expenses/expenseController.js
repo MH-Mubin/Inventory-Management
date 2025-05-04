@@ -25,7 +25,7 @@ exports.updateExpense = async (req, res) => {
 
 exports.expenseList = async (req, res) => {
     let searchRgx = {"$regex": req.params.searchKeyword, "$options": "i"};
-    let searchArray = [{note: searchRgx}, {amount: searchRgx}, {'expenseType.name': searchRgx}]; // Adding search criteria for note, amount, and expense type name
+    let searchArray = [{note: searchRgx}, {amount: searchRgx}, {'expenseType.expenseTypeName': searchRgx}]; // Adding search criteria for note, amount, and expense type name
     joinStage = {// Joining with expenseTypes collection to get the expense type details
         $lookup: {
             from: "expenseTypes",

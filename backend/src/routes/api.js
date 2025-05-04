@@ -10,6 +10,9 @@ const suppliersController = require('../controllers/suppliers/supplierController
 const expenseTypeController = require('../controllers/expenses/expenseTypeController');
 const expenseController = require('../controllers/expenses/expenseController');
 const productsController = require('../controllers/products/productController');
+const purchaseController = require('../controllers/purchase/purchaseController');
+const salesController = require('../controllers/sales/salesController');
+const returnsController = require('../controllers/returns/returnController');
 
 const router = express.Router();
 
@@ -74,6 +77,22 @@ router.get('/expenseList/:pageNo/:perPage/:searchKeyword', authMiddleware, expen
 router.post('/createProduct', authMiddleware, productsController.createProduct); // Create Product
 router.post('/updateProduct/:id', authMiddleware, productsController.updateProduct); // Update Product
 router.get('/productList/:pageNo/:perPage/:searchKeyword', authMiddleware, productsController.productList); // List Product
+
+
+// Routes for Purchase
+router.post('/createPurchase', authMiddleware, purchaseController.createPurchase); // Create Purchase
+router.get('/purchaseList/:pageNo/:perPage/:searchKeyword', authMiddleware, purchaseController.purchaseList); // List Purchase
+
+
+
+// Routes for Sales
+router.post('/createSale', authMiddleware, salesController.createSale); // Create Sale
+router.get('/saleList/:pageNo/:perPage/:searchKeyword', authMiddleware, salesController.saleList); // List Sale
+
+
+// Routes for Returns
+router.post('/createReturn', authMiddleware, returnsController.createReturn); // Create Return
+router.get('/returnList/:pageNo/:perPage/:searchKeyword', authMiddleware, returnsController.returnList); // List Return
 
 
 module.exports = router;
