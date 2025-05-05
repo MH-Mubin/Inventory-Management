@@ -1,8 +1,8 @@
 
 
 
-const parentModel = require('../../models/purchase/purchaseModel');
-const childModel = require('../../models/purchase/purhaseProductsModel');
+const parentModel = require('../../models/sales/saleModel');// Importing the parent model for sales
+const childModel = require('../../models/sales/saleProductsModel');// Importing the child model for sale products
 const createParentChildService = require('../../services/common/createParentChildService');
 const listOneJoinService = require('../../services/common/listOneJoinService');
 

@@ -3,8 +3,8 @@
 
 
 
-const parentModel = require('../../models/purchase/purchaseModel');
-const childModel = require('../../models/purchase/purhaseProductsModel');
+const parentModel = require('../../models/returns/returnModel');// Importing the parent model for returns
+const childModel = require('../../models/returns/returnProductsModel');// Importing the child model for return products
 const createParentChildService = require('../../services/common/createParentChildService');
 const listOneJoinService = require('../../services/common/listOneJoinService');
 
