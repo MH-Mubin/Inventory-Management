@@ -82,17 +82,19 @@ router.get('/productList/:pageNo/:perPage/:searchKeyword', authMiddleware, produ
 // Routes for Purchase
 router.post('/createPurchase', authMiddleware, purchaseController.createPurchase); // Create Purchase
 router.get('/purchaseList/:pageNo/:perPage/:searchKeyword', authMiddleware, purchaseController.purchaseList); // List Purchase
+router.get('/deletePurchase/:id', authMiddleware, purchaseController.purchaseDelete); // Delete Purchase
 
 
 
 // Routes for Sales
 router.post('/createSale', authMiddleware, salesController.createSale); // Create Sale
 router.get('/saleList/:pageNo/:perPage/:searchKeyword', authMiddleware, salesController.saleList); // List Sale
+router.get('/deleteSale/:id', authMiddleware, salesController.saleDelete); // Delete Sale
 
 
 // Routes for Returns
 router.post('/createReturn', authMiddleware, returnsController.createReturn); // Create Return
 router.get('/returnList/:pageNo/:perPage/:searchKeyword', authMiddleware, returnsController.returnList); // List Return
-
+router.get('/deleteReturn/:id', authMiddleware, returnsController.returnDelete); // Delete Return
 
 module.exports = router;

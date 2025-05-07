@@ -7,7 +7,7 @@ const parentModel = require('../../models/returns/returnModel');// Importing the
 const childModel = require('../../models/returns/returnProductsModel');// Importing the child model for return products
 const createParentChildService = require('../../services/common/createParentChildService');
 const listOneJoinService = require('../../services/common/listOneJoinService');
-
+const deleteParentChildService = require('../../services/common/deleteParentChildService');
 
 exports.createReturn = async (req, res) => {
     let result = await createParentChildService(req, parentModel, childModel, 'returnId');// Creating a return entry with parent and child models
@@ -36,3 +36,9 @@ exports.returnList = async (req, res) => {
         error: result.error
     });
 }
+
+exports.returnDelete = async (req, res) => {
+    let result = await deleteParentChildService(req, parentModel, childModel, 'returnID');// Deleting a return entry with parent and child models
+    res.status(200).json(result);
+}
+

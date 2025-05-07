@@ -5,7 +5,7 @@ const parentModel = require('../../models/sales/saleModel');// Importing the par
 const childModel = require('../../models/sales/saleProductsModel');// Importing the child model for sale products
 const createParentChildService = require('../../services/common/createParentChildService');
 const listOneJoinService = require('../../services/common/listOneJoinService');
-
+const deleteParentChildService = require('../../services/common/deleteParentChildService');
 
 exports.createSale = async (req, res) => {
     let result = await createParentChildService(req, parentModel, childModel, 'saleId');// Creating a sale entry with parent and child models
@@ -33,4 +33,9 @@ exports.saleList = async (req, res) => {
         data: result.data,
         error: result.error
     });
+}
+
+exports.saleDelete = async (req, res) => {
+    let result = await deleteParentChildService(req, parentModel, childModel, 'saleId');// Deleting a sale entry with parent and child models
+    res.status(200).json(result);
 }
