@@ -71,6 +71,7 @@ router.get('/expenseTypeDropdown', authMiddleware, expenseTypeController.expense
 router.post('/createExpense', authMiddleware, expenseController.createExpense); // Create Expense
 router.post('/updateExpense/:id', authMiddleware, expenseController.updateExpense); // Update Expense
 router.get('/expenseList/:pageNo/:perPage/:searchKeyword', authMiddleware, expenseController.expenseList); // List Expense
+router.delete('/deleteExpense/:id', authMiddleware, expenseController.deleteExpense)
 
 
 // Routes for Products

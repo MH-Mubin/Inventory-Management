@@ -10,7 +10,7 @@ const listOneJoinService = require('../../services/common/listOneJoinService');
 const deleteParentChildService = require('../../services/common/deleteParentChildService');
 
 exports.createReturn = async (req, res) => {
-    let result = await createParentChildService(req, parentModel, childModel, 'returnId');// Creating a return entry with parent and child models
+    let result = await createParentChildService(req, parentModel, childModel, 'returnID');// Creating a return entry with parent and child models
     res.status(200).json(result);
 };
 

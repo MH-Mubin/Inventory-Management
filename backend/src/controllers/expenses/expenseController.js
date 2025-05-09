@@ -3,6 +3,7 @@ const dataModel = require('../../models/expenses/expenseModel');
 const createService = require('../../services/common/createService');
 const updateService = require('../../services/common/updateService');
 const listOneJoinService = require('../../services/common/listOneJoinService');
+const deleteService = require('../../services/common/deleteService')
 
 
 exports.createExpense = async (req, res) => {
@@ -41,4 +42,13 @@ exports.expenseList = async (req, res) => {
         data: result.data,
         error: result.error
     });
+}
+
+exports.deleteExpense = async (req,res) =>{
+    let result = await deleteService (req, dataModel)
+    res.status(200).json({
+        message : result.message,
+        data : result.data,
+        error: result.error
+    })
 }
