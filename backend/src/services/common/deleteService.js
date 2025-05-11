@@ -10,7 +10,7 @@ const deleteService = async (request,model) => {
 
     let deleteResult = await model.deleteMany(objQuery);
 
-    return {status: 200,message: 'service deleted successfully', deleteResult }
+    return {status: 200,message: 'service deleted successfully', Delete: deleteResult }
     }
     catch(error){
         res.json({status: 500, message: 'Could not delete service', error: error.toString()});

@@ -38,5 +38,5 @@ const dbSchema = new mongoose.Schema({
 }, { timestamps: true, versionKey: false });
 
 
-const purchaseProductModel = mongoose.model("returnProducts", dbSchema);
-module.exports = purchaseProductModel;
+const returnProductModel = mongoose.model("returnProducts", dbSchema);
+module.exports = returnProductModel;

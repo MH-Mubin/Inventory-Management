@@ -6,6 +6,11 @@ const createService = require('../../services/common/createService');
 const updateService = require('../../services/common/updateService');
 const listService = require('../../services/common/listService');
 const dropdownService = require('../../services/common/dropdownService');
+const salesModel = require('../../models/sales/saleModel');
+const returnModel = require('../../models/returns/returnModel');
+const associateService = require('../../services/common/checkAssociateService')
+const deleteService = require('../../services/common/deleteService');
+const { default: mongoose } = require('mongoose');
 
 
 exports.createCustomer = async (req, res) => {
@@ -45,4 +50,21 @@ exports.customerDropdown = async (req, res) => {
         data: result.data,
         error: result.error
     });
+}
+
+exports.customerDelete = async(req,res)=>{
+    let deleteId = req.params.id;
+    const objectId = new mongoose.Types.ObjectId(deleteId);
+    let checkSalesAssociate = await associateService ({customerId:objectId}, salesModel);
+    let checkReturnAssociate = await associateService ({customerId:objectId}, returnModel);
+    if (checkSalesAssociate){
+        res.status(200).json({status: "associate", data: "Associate with Sales"})
+    }
+    else if (checkReturnAssociate){
+        res.status(200).json({status: "associate", data: "Associate with Returns"})
+    }
+    else{
+        let result = await deleteService(req, dataModel);
+        res.status(200).json(result)
+    }
 }

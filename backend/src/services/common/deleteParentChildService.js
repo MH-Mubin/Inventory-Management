@@ -12,6 +12,7 @@ const deleteParentChildService = async (request, parentModel, childModel, joinPr
             [joinPropertyName]: deleteID,
             userEmail: userEmail
         };
+        console.log("Child Query Object:", childQueryObject);
 
         const parentQueryObject = {
             _id: deleteID,
@@ -23,6 +24,7 @@ const deleteParentChildService = async (request, parentModel, childModel, joinPr
         await session.withTransaction(async () => {
             // Delete child documents
             const childDelete = await childModel.deleteMany(childQueryObject, { session });
+            console.log(childDelete)
             if (childDelete.deletedCount === 0) {
                 throw new Error("No child records deleted");
             }

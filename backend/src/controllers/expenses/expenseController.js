@@ -47,8 +47,7 @@ exports.expenseList = async (req, res) => {
 exports.deleteExpense = async (req,res) =>{
     let result = await deleteService (req, dataModel)
     res.status(200).json({
-        message : result.message,
-        data : result.data,
+        data : result,
         error: result.error
     })
 }

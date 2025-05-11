@@ -38,6 +38,7 @@ router.post('/createBrand', authMiddleware, brandsController.createBrand); // Cr
 router.post('/updateBrand/:id', authMiddleware, brandsController.updateBrand); // Update Brand
 router.get('/brandList/:pageNo/:perPage/:searchKeyword', authMiddleware, brandsController.brandList); // List Brand
 router.get('/brandDropdown', authMiddleware, brandsController.brandDropdown); // Brand Dropdown
+router.get('/brandDelete/:id', authMiddleware, brandsController.brandDelete); // Brand Delete
 
 
 // Routes for Categories
@@ -45,6 +46,7 @@ router.post('/createCategory', authMiddleware, categoriesController.createCatego
 router.post('/updateCategory/:id', authMiddleware, categoriesController.updateCategory); // Update Category
 router.get('/categoryList/:pageNo/:perPage/:searchKeyword', authMiddleware, categoriesController.categoryList); // List Category
 router.get('/categoryDropdown', authMiddleware, categoriesController.categoryDropdown); // Category Dropdown
+router.get('/categoryDelete/:id', authMiddleware, categoriesController.categoryDelete); // Category Delete
 
 
 // Routes for Customers
@@ -52,13 +54,14 @@ router.post('/createCustomer', authMiddleware, customersController.createCustome
 router.post('/updateCustomer/:id', authMiddleware, customersController.updateCustomer); // Update Customer
 router.get('/customerList/:pageNo/:perPage/:searchKeyword', authMiddleware, customersController.customerList); // List Customer
 router.get('/customerDropdown', authMiddleware, customersController.customerDropdown); // Customer Dropdown
+router.get('/customerDelete/:id', authMiddleware, customersController.customerDelete); // Customer Delete
 
 // Routes for Suppliers
 router.post('/createSupplier', authMiddleware, suppliersController.createSupplier); // Create Supplier
 router.post('/updateSupplier/:id', authMiddleware, suppliersController.updateSupplier); // Update Supplier
 router.get('/supplierList/:pageNo/:perPage/:searchKeyword', authMiddleware, suppliersController.supplierList); // List Supplier
 router.get('/supplierDropdown', authMiddleware, suppliersController.supplierDropdown); // Supplier Dropdown
-
+router.get('/supplierDelete/:id', authMiddleware, suppliersController.supplierDelete); // Supplier Delete
 
 // Routes for expense Types
 router.post('/createExpenseType', authMiddleware, expenseTypeController.createExpenseType); // Create Expense
@@ -71,14 +74,14 @@ router.get('/expenseTypeDropdown', authMiddleware, expenseTypeController.expense
 router.post('/createExpense', authMiddleware, expenseController.createExpense); // Create Expense
 router.post('/updateExpense/:id', authMiddleware, expenseController.updateExpense); // Update Expense
 router.get('/expenseList/:pageNo/:perPage/:searchKeyword', authMiddleware, expenseController.expenseList); // List Expense
-router.delete('/deleteExpense/:id', authMiddleware, expenseController.deleteExpense)
+router.get('/deleteExpense/:id', authMiddleware, expenseController.deleteExpense)
 
 
 // Routes for Products
 router.post('/createProduct', authMiddleware, productsController.createProduct); // Create Product
 router.post('/updateProduct/:id', authMiddleware, productsController.updateProduct); // Update Product
 router.get('/productList/:pageNo/:perPage/:searchKeyword', authMiddleware, productsController.productList); // List Product
-
+router.get('/deleteProduct/:id', authMiddleware, productsController.productDelete);
 
 // Routes for Purchase
 router.post('/createPurchase', authMiddleware, purchaseController.createPurchase); // Create Purchase
