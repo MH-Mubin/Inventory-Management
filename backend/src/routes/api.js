@@ -14,6 +14,7 @@ const purchaseController = require('../controllers/purchase/purchaseController')
 const salesController = require('../controllers/sales/salesController');
 const returnsController = require('../controllers/returns/returnController');
 const reportController = require('../controllers/reports/reportController');
+const summaryController = require('../controllers/summary/summaryController')
 
 
 const router = express.Router();
@@ -109,5 +110,15 @@ router.post('/expenseReport',authMiddleware, reportController.expenseReport); //
 router.post('/purchaseReport',authMiddleware, reportController.purchaseReport); // Purchase Report
 router.post('/returnReport',authMiddleware, reportController.returnReport); // Return Report
 router.post('/salesReport',authMiddleware, reportController.salesReport); // Sales Report
+
+
+// Routes for summary
+router.post('/expenseSummary',authMiddleware, summaryController.expenseSummary); // Expense Summary
+router.post('/purchaseSummary',authMiddleware, summaryController.purchaseSummary); // Purchase Summary
+router.post('/returnSummary',authMiddleware, summaryController.returnSummary); // Return Summary
+router.post('/saleSummary',authMiddleware, summaryController.saleSummary); // Sale Summary
+
+
+
 
 module.exports = router;

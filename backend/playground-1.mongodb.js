@@ -1,1 +1,1 @@
-db.expenses.findOne({ email: "mubin.cbs@gmail.com" })
+db.expenses.distinct("email")

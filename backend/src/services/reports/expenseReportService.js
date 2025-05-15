@@ -3,16 +3,16 @@ const expenseModel = require ('../../models/expenses/expenseModel')
 
 const expenseReportService = async (request)=>{
     try{
-        let userEmail = request.headers['email'];
+        let email = request.headers['email'];
         let fromDate = request.body['fromDate'];
         let toDate = request.body['toDate']
-        console.log("Email:", userEmail);
+        console.log("Email:", email);
         console.log("From:", fromDate);
         console.log("To:", toDate);
 
         let data = await expenseModel.aggregate([
             
-            {$match: {email: userEmail, date:{$gte:new Date (fromDate), $lte: new Date (toDate)}}}, // here we checked 3 condition. user email, from date and to date.
+            {$match: {userEmail: email, date:{$gte:new Date (fromDate), $lte: new Date (toDate)}}}, // here we checked 3 condition. user email, from date and to date.
             
             {
                 $facet:{  // by using facet we are counting total amount using id, from expense
