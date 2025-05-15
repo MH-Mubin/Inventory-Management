@@ -6,11 +6,16 @@ const expenseReportService = async (request)=>{
         let userEmail = request.headers['email'];
         let fromDate = request.body['fromDate'];
         let toDate = request.body['toDate']
+        console.log("Email:", userEmail);
+        console.log("From:", fromDate);
+        console.log("To:", toDate);
 
         let data = await expenseModel.aggregate([
-            {$match: {email: userEmail, date:{$gte:new Date (fromDate), $lte: new Date (toDate)}}},
+            
+            {$match: {email: userEmail, date:{$gte:new Date (fromDate), $lte: new Date (toDate)}}}, // here we checked 3 condition. user email, from date and to date.
+            
             {
-                $facet:{
+                $facet:{  // by using facet we are counting total amount using id, from expense
                     total: [{
                         $group:{
                             _id:0,
@@ -18,14 +23,17 @@ const expenseReportService = async (request)=>{
                         }
                     }],
                     rows:[
-                        {$lookup:{from: 'expenseType', localField:'typeId', foreignField:'_id', as:'type'}}
+                        {$lookup:{from: 'expenseTypes', localField:'typeID', foreignField:'_id', as:'type'}} // by using lookup we are getting data from expenseTypes table by the localkey and foreignKey "typeID" and "_id"
                     ],
                 }
             }
 
         ])
+        return {status:'success', data: data}
     }
     catch(error){
-        return('fail')
+        return {status:'fail', data: error.toString()}
     }
 }
+
+module.exports = expenseReportService
