@@ -12,14 +12,14 @@ const expenseReportService = async (request)=>{
 
         let data = await expenseModel.aggregate([
             
-            {$match: {userEmail: email, date:{$gte:new Date (fromDate), $lte: new Date (toDate)}}}, // here we checked 3 condition. user email, from date and to date.
+            {$match: {userEmail: email, createdAt:{$gte:new Date (fromDate), $lte: new Date (toDate)}}}, // here we checked 3 condition. user email, from date and to date.
             
             {
                 $facet:{  // by using facet we are counting total amount using id, from expense
                     total: [{
                         $group:{
                             _id:0,
-                            totalAmount:{$sum: '$amount'}
+                            totalAmount:{$sum: "$amount"}
                         }
                     }],
                     rows:[

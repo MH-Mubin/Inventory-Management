@@ -11,6 +11,7 @@ const returnModel = require('../../models/returns/returnModel');
 const associateService = require('../../services/common/checkAssociateService')
 const deleteService = require('../../services/common/deleteService');
 const { default: mongoose } = require('mongoose');
+const detailsByIdService = require('../../services/common/detailsByIdService')
 
 
 exports.createCustomer = async (req, res) => {
@@ -67,4 +68,9 @@ exports.customerDelete = async(req,res)=>{
         let result = await deleteService(req, dataModel);
         res.status(200).json(result)
     }
+}
+
+exports.customerDetailsById = async (req, res) =>{
+    let result = await detailsByIdService(req, dataModel)
+    res.status(200).json(result)
 }

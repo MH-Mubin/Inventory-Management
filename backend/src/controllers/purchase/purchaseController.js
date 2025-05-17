@@ -4,6 +4,7 @@ const childModel = require('../../models/purchase/purhaseProductsModel');
 const createParentChildService = require('../../services/common/createParentChildService');
 const listOneJoinService = require('../../services/common/listOneJoinService');
 const deleteParentChildService = require('../../services/common/deleteParentChildService');
+const detailsByIdService = require('../../services/common/detailsByIdService')
 
 
 exports.createPurchase = async (req, res) => {
@@ -38,4 +39,10 @@ exports.purchaseList = async (req, res) => {
 exports.purchaseDelete = async (req, res) => {
     let result = await deleteParentChildService(req, parentModel, childModel, 'purchaseId');
     res.status(200).json(result);
+}
+
+
+exports.purchaseDetailsById = async (req, res) =>{
+    let result = await detailsByIdService(req, dataModel)
+    res.status(200).json(result)
 }

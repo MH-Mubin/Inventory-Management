@@ -2,18 +2,18 @@
 const purchaseProductModel = require('../../models/purchase/purhaseProductsModel');
 const purchaseReportService = async (request) => {
     try{
-        let userEmail = request.headers['email'];
+        let email = request.headers['email'];
         let fromDate = request.body['fromDate'];
         let toDate = request.body['toDate'];
 
         let data = await purchaseProductModel.aggregate([
-            {$match: {email: userEmail, date:{$gte: new Date (fromDate), $lte: new Date (toDate)}}},
+            {$match: {userEmail: email, createdAt:{$gte: new Date (fromDate), $lte: new Date (toDate)}}},
             {
                 $facet: {
                     Total: [{
                         $group: {
                             _id: 0,
-                            TotalAmount: {$sum:"Total"}
+                            TotalAmount: {$sum:'$Total'}
                         }
                     }],
                     Rows: [

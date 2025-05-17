@@ -7,6 +7,7 @@ const createService = require('../../services/common/createService');
 const updateService = require('../../services/common/updateService');
 const listService = require('../../services/common/listService');
 const dropdownService = require('../../services/common/dropdownService');
+const detailsByIdService = require('../../services/common/detailsByIdService')
 
 
 exports.createExpenseType = async (req, res) => {
@@ -46,4 +47,9 @@ exports.expenseTypeDropdown = async (req, res) => {
         data: result.data,
         error: result.error
     });
+}
+
+exports.expenseTypeDetailsById = async (req, res) =>{
+    let result = await detailsByIdService(req, dataModel)
+    res.status(200).json(result)
 }

@@ -10,7 +10,7 @@ const { default: mongoose } = require('mongoose');
 const salesProductModel = require('../../models/sales/saleProductsModel')
 const returnProductModel = require('../../models/returns/returnProductsModel')
 const purchaseProductModel = require('../../models/purchase/purhaseProductsModel')
-
+const detailsByIdService = require('../../services/common/detailsByIdService')
 
 
 exports.createProduct = async (req, res) => {
@@ -81,4 +81,10 @@ exports.productDelete = async(req,res)=>{
         let result = await deleteService(req, dataModel);
         res.status(200).json(result)
     }
+}
+
+
+exports.productDetailsById = async (req, res) =>{
+    let result = await detailsByIdService(req, dataModel)
+    res.status(200).json(result)
 }

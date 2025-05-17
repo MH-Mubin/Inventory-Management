@@ -9,6 +9,7 @@ const userResetPassService = require("../../services/user/userResetpassService")
 const userUpdateService = require("../../services/user/userUpdateService");
 const userVerifyEmailService = require("../../services/user/userVerifyEmailService");
 const userDetailsService = require("../../services/user/userDetailsService");
+const detailsByIdService = require('../../services/common/detailsByIdService')
 
 
 exports.registration = async (req, res) => {
@@ -72,4 +73,10 @@ exports.recoverResetPass = async (req, res) => {
     } else {
         res.status(result.status).json({ message: result.message, error: result.error });
     }
+}
+
+
+exports.userDetailsById = async (req, res) =>{
+    let result = await detailsByIdService(req, dataModel)
+    res.status(200).json(result)
 }

@@ -10,6 +10,7 @@ const associateService = require('../../services/common/checkAssociateService')
 const deleteService = require('../../services/common/deleteService');
 const { default: mongoose } = require('mongoose');
 const productModel = require('../../models/Products/productModel')
+const detailsByIdService = require('../../services/common/detailsByIdService')
 
 
 exports.createBrand = async (req, res) => {
@@ -62,4 +63,9 @@ exports.brandDelete = async(req,res)=>{
         let result = await deleteService(req, dataModel);
         res.status(200).json(result)
     }
+}
+
+exports.brandDetailsById = async (req, res) =>{
+    let result = await detailsByIdService(req, dataModel)
+    res.status(200).json(result)
 }
