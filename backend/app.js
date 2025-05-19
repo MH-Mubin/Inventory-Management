@@ -61,10 +61,4 @@ mongoose.connect(mongo_url, OPTION).then(() => {
 // Routing implementation
 app.use('/api/v1', router);
 
-// // undefined route handling
-// app.use("*", (req,res) => {
-//     res.status(404).json({status: "fail" ,message: "Route Not Found"});
-// });
-
-
 module.exports = app;
