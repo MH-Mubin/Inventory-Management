@@ -11,20 +11,18 @@ const bodyParser = require('body-parser');
 const helmet = require('helmet');
 const cors = require('cors');
 const rateLimit = require('express-rate-limit');
-//const xss = require('xss-clean');
 const hpp = require('hpp');
-//const mongoSanitize = require('express-mongo-sanitize');
 
 // Database Lib Import
 const mongoose = require('mongoose');
+const mongoSanitize = require('express-mongo-sanitize');
 
 // Security Middleware Implementation
 app.use(helmet());
 app.use(cors());
-// app.use(mongoSanitize({
-//     replaceWith: '_'
-//   }));
-//app.use(xss());
+app.use(mongoSanitize({
+    replaceWith: '_'
+  }));
 app.use(hpp());
 
 app.use(express.json({limit: '100mb'}));

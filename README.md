@@ -1,3 +1,21 @@
+## Table of Contents
+
+- [Overview](#overview)
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Project Folder Structure](#project-folder-structure)
+- [Key Design Highlights](#key-design-highlights)
+- [Installation](#installation)
+- [Usage](#usage)
+- [API Endpoints](#api-endpoints)
+- [Authentication](#authentication)
+- [Seeder](#seeder)
+- [Testing](#testing)
+- [Deployment](#deployment)
+- [Contributing](#contributing)
+- [Contact](#contact)
+- [Tools Used](#tools-used)
+
 ## Overview
 
 Streamline your business with real-time inventory and sales tracking.  
@@ -202,13 +220,12 @@ backend
 
 ---
 
-### 7. Usage
+### Usage
 
 ```
 - The server runs at `http://localhost:5050`.
 - Access API endpoints via `/api/v1/` (e.g., `/api/v1/products`, `/api/v1/sales`).
 - Use **Postman** to test endpoints with the provided [Postman Collection](https://testing-9433.postman.co/workspace/MERN-practice~dd1001a5-bd77-489f-a1e2-7524af48aa2c/collection/37808311-a5652f34-430d-416f-937c-baca99ec78fa?action=share&creator=37808311). Some routes require JWT tokens.
-- Refer to the API documentation (if available) for detailed endpoint information.
 ```
 
 ## API Endpoints
@@ -267,15 +284,15 @@ node seeder/seedData.js
 
 3. Commit changes:
 
-```bash
-   git commit -m "Add feature"
-```
+   ```bash
+      git commit -m "Add feature"
+   ```
 
 4. Push to the branch:
 
-```bash
-git push origin feature-name
-```
+   ```bash
+   git push origin feature-name
+   ```
 
 5. Submit a pull request.
 
@@ -283,7 +300,7 @@ git push origin feature-name
 
 ## Contact
 
-For issues or inquiries, reach out via [GitHub](https://github.com/MH-Mubin).
+For issues or inquiries, reach out via [GitHub](https://github.com/MH-Mubin) or [email](mahmud.h.mubin@gmail.com).
 
 ## Tools Used
 
